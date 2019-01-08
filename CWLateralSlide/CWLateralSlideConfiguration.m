@@ -11,10 +11,10 @@
 @implementation CWLateralSlideConfiguration
 
 + (instancetype)defaultConfiguration {
-    return [CWLateralSlideConfiguration configurationWithDistance:kCWSCREENWIDTH * 0.75 maskAlpha:0.4 scaleY:1.0 direction:CWDrawerTransitionFromLeft backImage:nil];
+    return [CWLateralSlideConfiguration configurationWithDistance:kCWSCREENWIDTH * 0.75 maskAlpha:0.4 scaleY:1.0 direction:CWDrawerTransitionFromLeft backImage:nil vcHeight:kCWSCREENHEIGHT];
 }
 
-- (instancetype)initWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage {
+- (instancetype)initWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage vcHeight:(float)vcHeight{
     if (self = [super init]) {
         _distance = distance;
         _maskAlpha = alpha;
@@ -24,12 +24,17 @@
         _finishPercent = 0.4;
         _showAnimDuration = 0.25;
         _HiddenAnimDuration = 0.25;
+        _vcHeight = vcHeight;
     }
     return self;
 }
 
-+ (instancetype)configurationWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage {
-    return [[self alloc] initWithDistance:distance maskAlpha:alpha scaleY:scaleY direction:direction backImage:backImage];
++ (instancetype)configurationWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage vcHeight:(float)vcHeight{
+    return [[self alloc] initWithDistance:distance maskAlpha:alpha scaleY:scaleY direction:direction backImage:backImage vcHeight:vcHeight];
+}
+
+-(float)vcHeight{
+    return _vcHeight;
 }
 
 - (float)distance {

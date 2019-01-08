@@ -18,6 +18,10 @@ typedef NS_ENUM(NSUInteger,CWDrawerTransitionDirection) {
 };
 
 @interface CWLateralSlideConfiguration : NSObject
+/**
+ 根控制器height，默认为全屏幕高度
+ */
+@property (nonatomic,assign) float vcHeight;
 
 /**
  根控制器可偏移的距离，默认为屏幕的0.75
@@ -78,7 +82,7 @@ typedef NS_ENUM(NSUInteger,CWDrawerTransitionDirection) {
  @param backImage 动画切换过程中，最底层的背景图片 (仅CWDrawerAnimationTypeDefault动画模式有效)
  @return 配置对象本身
  */
-- (instancetype)initWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage;
+- (instancetype)initWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage vcHeight:(float)vcHeight;
 
 /**
  创建一个配置对象的类方法
@@ -90,6 +94,6 @@ typedef NS_ENUM(NSUInteger,CWDrawerTransitionDirection) {
  @param backImage 动画切换过程中，最底层的背景图片
  @return 配置对象本身
  */
-+ (instancetype)configurationWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage;
++ (instancetype)configurationWithDistance:(float)distance maskAlpha:(float)alpha scaleY:(float)scaleY direction:(CWDrawerTransitionDirection)direction backImage:(UIImage *)backImage vcHeight:(float)vcHeight;
 
 @end
